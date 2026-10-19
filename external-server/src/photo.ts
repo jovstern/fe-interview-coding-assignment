@@ -32,7 +32,14 @@ export const photoResponses = {
       aperture: 2.8,
       capturedAt: '2026-06-14T18:42:00Z',
     },
-    tags: ['Golden hour', 'Architecture', 'Coast'],
+    tags: [
+      'Golden hour',
+      'Architecture',
+      'Coast',
+      'Golden hour',
+      'Architecture',
+      'Coast',
+    ],
     related: [
       thumb('p_008', 'terracotta-rooftops'),
       thumb('p_003', 'soft-morning'),

@@ -18,6 +18,7 @@ export function RelatedPhotos({
   const thumbnailById = new Map(
     related.map((photo) => [photo.id, photo.thumbnailUrl])
   );
+
   const photos = feed.filter(
     (item) => item.id === currentId || thumbnailById.has(item.id)
   );

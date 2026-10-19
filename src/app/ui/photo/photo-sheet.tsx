@@ -16,6 +16,7 @@ export function PhotoSheet({
   const [badge] = photo.badges;
   const { author } = photo;
 
+  const filteredTags = new Set(photo.tags);
   return (
     <SheetToggle
       className={styles.sheet}
@@ -53,8 +54,8 @@ export function PhotoSheet({
         <hr className={styles.divider} />
         <PhotoMeta details={photo.details} />
         <ul aria-label="Tags" className={styles.tags}>
-          {photo.tags.map((tag) => (
-            <li key={tag} className={styles.tag}>
+          {[...filteredTags].map((tag, index) => (
+            <li key={tag + index} className={styles.tag}>
               {tag}
             </li>
           ))}
