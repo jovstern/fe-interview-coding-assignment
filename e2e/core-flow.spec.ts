@@ -37,13 +37,17 @@ test('browse from the feed to a photo and on to a related one', async ({
 test('an unknown photo shows a not-found page with a way home', async ({
   page,
 }) => {
-  const response = await page.goto('/photos/nope');
-  expect(response?.status()).toBe(404);
+  // The photo skeleton streams first, so the status is already 200; Next.js
+  // marks the streamed not-found page noindex instead.
+  await page.goto('/photos/nope');
   await expect(
     page.getByRole('heading', { name: 'Photo not found' })
   ).toBeVisible();
   await expect(
     page.getByRole('link', { name: 'Back to all photos' })
   ).toHaveAttribute('href', '/');
+  await expect(
+    page.locator('meta[name="robots"]').first()
+  ).toHaveAttribute('content', /noindex/);
   await page.waitForTimeout(1000);
 });
