@@ -1,3 +1,5 @@
 .page {
-  background-color: cornflowerblue;
+  margin-inline: auto;
+  padding: 32px var(--gutter) 24px;
+  max-width: var(--content-max-width);
 }

@@ -1,0 +1,21 @@
+.intro {
+  margin-block: 24px 20px;
+}
+
+.headline {
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.stop {
+  color: var(--color-accent);
+}
+
+.subheadline {
+  margin-top: 6px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}

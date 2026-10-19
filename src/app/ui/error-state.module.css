@@ -1,0 +1,74 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 32px var(--gutter);
+  min-height: 100dvh;
+  text-align: center;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.stop {
+  color: var(--color-accent);
+}
+
+.message {
+  max-width: 32ch;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Actions are links or buttons drawn as the design's pill; a button (the retry) leads. */
+.actions > a,
+.actions > button {
+  display: inline-flex;
+  align-items: center;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  padding: 0 16px;
+  height: 34px;
+  color: var(--color-accent);
+  font: inherit;
+  font-size: 12px;
+}
+
+.actions > a:hover,
+.actions > button:hover {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.actions > button {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.actions > button:hover {
+  background: color-mix(
+    in srgb,
+    var(--color-accent),
+    var(--color-ink) 15%
+  );
+}

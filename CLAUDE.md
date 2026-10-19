@@ -25,7 +25,10 @@ spec and plan live in `docs/superpowers/`.
   (no Tailwind), their Prettier config (organize-imports, css-order), their ESLint config,
   SVG icons in `public/icons` importable as components through SVGR. Keep their files'
   style; do not add libraries without a reason in the plan.
-- **Design:** Figma file in the README; the PDF export `fe-interview-coding-assignment.pdf`
+- **Design:** the Figma MCP (`figma`) reads the file linked in the README: in `/task`'s
+  first step, pull the design context and variables (colours, type, spacing) of the home
+  and details frames once, and save them in the spec; the free plan allows only a few calls,
+  so never call it again after that. Also the PDF export `fe-interview-coding-assignment.pdf`
   (3 pages) can be read directly and is the source for layout, spacing, colours and
   typography. Match it closely; the brief grades aesthetics and attention to detail.
 - The brief grades: state (server data separate from UI state, no duplication),

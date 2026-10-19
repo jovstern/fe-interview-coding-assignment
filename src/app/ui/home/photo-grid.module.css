@@ -1,0 +1,10 @@
+.grid {
+  column-gap: var(--grid-gap);
+  columns: 2;
+  list-style: none;
+}
+
+.cell {
+  break-inside: avoid;
+  margin-bottom: var(--grid-gap);
+}

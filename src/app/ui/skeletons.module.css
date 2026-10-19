@@ -1,0 +1,227 @@
+/* Each block mirrors the real component's box, so nothing moves when the content lands. */
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}
+
+/* Stopped by the global reduced-motion rule, which zeroes animation durations. */
+.bone {
+  display: block;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 6px;
+  background: linear-gradient(
+      90deg,
+      transparent 30%,
+      var(--color-shimmer) 50%,
+      transparent 70%
+    )
+    0 0 / 200% 100% var(--color-placeholder);
+}
+
+/* A text line: one line box tall (set by font-size and line-height), painted thinner. */
+.line {
+  /* The painted box is inset by the padding, so the radius grows by it to stay round. */
+  border-radius: calc(0.22lh + 4px);
+  background-clip: content-box;
+  padding-block: 0.22lh;
+  height: 1lh;
+}
+
+/* Home: mirrors page.module.css, greeting-header, feed-intro and the photo grid. */
+
+.home {
+  margin-inline: auto;
+  padding: 32px var(--gutter) 24px;
+  max-width: var(--content-max-width);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.greeting {
+  width: 72px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.name {
+  width: 104px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.intro {
+  margin-block: 24px 20px;
+}
+
+.headline {
+  width: min(300px, 85%);
+  font-size: 27px;
+  line-height: 1.15;
+}
+
+.subheadline {
+  width: 90%;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.headline + .subheadline {
+  margin-top: 6px;
+}
+
+.subheadline:last-child {
+  width: 40%;
+}
+
+.grid {
+  column-gap: var(--grid-gap);
+  columns: 2;
+  list-style: none;
+}
+
+.cell {
+  break-inside: avoid;
+  margin-bottom: var(--grid-gap);
+}
+
+.card {
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.card > .bone {
+  border-radius: 0;
+}
+
+.caption {
+  padding: 12px 12px 14px;
+}
+
+.title {
+  width: 75%;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.author {
+  margin-top: 2px;
+  width: 50%;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Photo: mirrors photos/[id]/page.module.css, photo-hero and photo-sheet. */
+
+.photo {
+  padding-top: 46dvh;
+}
+
+.hero {
+  position: fixed;
+  inset: 0;
+  border-radius: 0;
+  height: 100dvh;
+}
+
+.sheet {
+  position: relative;
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: var(--color-surface);
+  padding: 11px var(--gutter-details) 32px;
+  min-height: 54dvh;
+}
+
+.handle {
+  display: block;
+  margin-bottom: 15px;
+  border-radius: 2px;
+  background: var(--color-border);
+  width: 40px;
+  height: 4px;
+}
+
+.eyebrow {
+  width: 120px;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.photoTitle {
+  margin-top: 6px;
+  width: 60%;
+  font-size: 29px;
+  line-height: 1.1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.authorAvatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+}
+
+.authorName {
+  width: 96px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.role {
+  margin-top: 2px;
+  width: 128px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.description:last-child {
+  width: 70%;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-items: center;
+  gap: 8px;
+}
+
+.icon {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}

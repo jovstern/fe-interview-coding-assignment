@@ -1,0 +1,42 @@
+.row {
+  display: flex;
+  gap: 8px;
+  margin-inline: calc(-1 * var(--gutter-details));
+  padding: 4px var(--gutter-details);
+  overflow-x: auto;
+  scroll-padding-inline: var(--gutter-details);
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  list-style: none;
+}
+
+.row li {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.thumb {
+  display: block;
+  border-radius: var(--radius-thumb);
+  background: var(--color-placeholder);
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+.thumb:focus-visible .image {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+@media (hover: hover) {
+  .thumb:hover .image {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
