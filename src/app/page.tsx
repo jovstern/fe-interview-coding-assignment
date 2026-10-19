@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: PageProps<'/'>) {
   const filter = (Array.isArray(param) ? param[0] : param) || undefined;
   const home = await getHome();
   const items = filterItems(home.items, filter);
-  console.log('home', home);
+
   return (
     <div className={styles.page}>
       <GreetingHeader
