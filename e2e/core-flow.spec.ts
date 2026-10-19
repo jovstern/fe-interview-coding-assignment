@@ -31,6 +31,18 @@ test('browse from the feed to a photo and on to a related one', async ({
       .getByRole('main')
       .getByRole('heading', { level: 1, name: 'Terracotta Rooftops' })
   ).toBeVisible();
+
+  // The row keeps every thumbnail, the photo we came from included, and marks the one on show.
+  const related = page.getByRole('navigation', {
+    name: 'Related photos',
+  });
+  await expect(related.getByRole('link')).toHaveCount(8);
+  await expect(
+    related.getByRole('link', { name: 'Casa del Sol by Elena Rossi' })
+  ).toBeVisible();
+  await expect(
+    related.locator('[aria-current="page"]')
+  ).toHaveAccessibleName('Terracotta Rooftops by Elena Rossi');
   await page.waitForTimeout(1000);
 });
 
