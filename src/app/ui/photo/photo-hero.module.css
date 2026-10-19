@@ -60,3 +60,15 @@
   width: 6px;
   height: 6px;
 }
+
+@media (min-width: 1024px) {
+  .hero {
+    position: sticky;
+    top: 0;
+    background: var(--color-ink);
+  }
+
+  .image {
+    object-fit: contain;
+  }
+}

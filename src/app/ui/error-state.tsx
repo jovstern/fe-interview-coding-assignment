@@ -11,7 +11,7 @@ export function ErrorState({
   action: ReactNode;
 }) {
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <h1 className={styles.title}>
         {title}
         <span aria-hidden className={styles.stop}>

@@ -11,7 +11,7 @@ export function PhotoHero({ photo }: { photo: PhotoResponse }) {
       <Image
         src={photo.image.url}
         fill
-        sizes="100vw"
+        sizes="(min-width: 1024px) calc(100vw - 440px), 100vw"
         preload
         alt={photoAlt(photo)}
         className={styles.image}

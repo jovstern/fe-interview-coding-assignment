@@ -10,6 +10,9 @@ const CARD_RATIOS = [
   '800 / 700',
 ];
 
+// The collection chips' widths in the design (For you, Coast, Architecture).
+const CHIP_WIDTHS = [73, 64, 102];
+
 function LoadingLabel() {
   return (
     <p role="status" className="visually-hidden">
@@ -43,6 +46,15 @@ export function HomeSkeleton() {
         <span
           className={`${styles.bone} ${styles.line} ${styles.subheadline}`}
         />
+      </div>
+      <div aria-hidden className={styles.chips}>
+        {CHIP_WIDTHS.map((width) => (
+          <span
+            key={width}
+            className={`${styles.bone} ${styles.chip}`}
+            style={{ width }}
+          />
+        ))}
       </div>
       <ul aria-hidden className={styles.grid}>
         {CARD_RATIOS.map((aspectRatio) => (

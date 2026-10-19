@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import type { PhotoResponse } from '../../lib/definitions';
+import { FollowButton } from './follow-button';
 import { PhotoMeta } from './photo-meta';
 import styles from './photo-sheet.module.css';
+import { SheetToggle } from './sheet-toggle';
 
 export function PhotoSheet({
   photo,
@@ -15,15 +17,18 @@ export function PhotoSheet({
   const { author } = photo;
 
   return (
-    <article id="photo-details" className={styles.sheet}>
-      <div aria-hidden className={styles.handle} />
-      <header>
-        <p className={styles.eyebrow}>
-          <span className={styles.category}>{photo.category}</span>
-          {badge && <span className={styles.badge}>{badge}</span>}
-        </p>
-        <h1 className={styles.title}>{photo.title}</h1>
-      </header>
+    <SheetToggle
+      className={styles.sheet}
+      summary={
+        <header>
+          <p className={styles.eyebrow}>
+            <span className={styles.category}>{photo.category}</span>
+            {badge && <span className={styles.badge}>{badge}</span>}
+          </p>
+          <h1 className={styles.title}>{photo.title}</h1>
+        </header>
+      }
+    >
       <div className={styles.body}>
         <div className={styles.author}>
           <Image
@@ -39,6 +44,10 @@ export function PhotoSheet({
               {author.role} · {author.city}
             </p>
           </div>
+          <FollowButton
+            isFollowing={author.isFollowing}
+            authorName={author.name}
+          />
         </div>
         <p className={styles.description}>{photo.description}</p>
         <hr className={styles.divider} />
@@ -52,6 +61,6 @@ export function PhotoSheet({
         </ul>
         {children}
       </div>
-    </article>
+    </SheetToggle>
   );
 }

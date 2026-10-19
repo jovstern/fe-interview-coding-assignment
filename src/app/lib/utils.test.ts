@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import type { FeedItem } from './definitions';
 import {
+  filterItems,
   formatAperture,
   formatCapturedAt,
   formatLens,
@@ -48,5 +50,48 @@ describe('photoAlt', () => {
         author: { name: 'Elena Rossi' },
       })
     ).toBe('Casa del Sol by Elena Rossi');
+  });
+});
+
+describe('filterItems', () => {
+  const tagsById: Record<string, string[]> = {
+    p_001: ['coast', 'architecture'],
+    p_002: ['architecture'],
+    p_003: ['interior'],
+    p_004: ['architecture'],
+    p_005: ['coast'],
+    p_006: ['market'],
+    p_007: ['coast'],
+    p_008: ['architecture'],
+  };
+  const items: FeedItem[] = Object.entries(tagsById).map(
+    ([id, tags]) => ({
+      id,
+      title: id,
+      author: { id: 'a_001', name: 'Elena Rossi' },
+      image: {
+        url: `https://picsum.photos/seed/${id}/800/1000`,
+        width: 800,
+        height: 1000,
+      },
+      tags,
+    })
+  );
+
+  it('keeps the items tagged with the filter', () => {
+    expect(filterItems(items, 'coast').map((item) => item.id)).toEqual([
+      'p_001',
+      'p_005',
+      'p_007',
+    ]);
+  });
+
+  it('returns nothing for an unknown filter', () => {
+    expect(filterItems(items, 'zzz')).toEqual([]);
+  });
+
+  it('returns every item without a filter or for "for-you"', () => {
+    expect(filterItems(items, undefined)).toHaveLength(8);
+    expect(filterItems(items, 'for-you')).toHaveLength(8);
   });
 });

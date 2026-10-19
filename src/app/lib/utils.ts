@@ -1,3 +1,5 @@
+import type { FeedItem } from './definitions';
+
 export function greetingFor(date: Date): string {
   const hour = date.getHours();
   if (hour >= 5 && hour < 12) return 'Good morning';
@@ -29,4 +31,14 @@ export function photoAlt(item: {
   author: { name: string };
 }): string {
   return `${item.title} by ${item.author.name}`;
+}
+
+export const ALL_FILTER_ID = 'for-you';
+
+export function filterItems(
+  items: FeedItem[],
+  filter: string | undefined
+): FeedItem[] {
+  if (filter === undefined || filter === ALL_FILTER_ID) return items;
+  return items.filter((item) => item.tags.includes(filter));
 }
