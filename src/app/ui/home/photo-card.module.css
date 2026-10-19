@@ -9,11 +9,6 @@
   overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
 .frame {
   background: var(--color-placeholder);
   overflow: hidden;
@@ -26,8 +21,24 @@
   height: auto;
 }
 
-.card:hover .image {
+.card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:focus-visible .image {
   transform: scale(1.03);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .card:hover .image {
+    transform: scale(1.03);
+  }
 }
 
 .caption {

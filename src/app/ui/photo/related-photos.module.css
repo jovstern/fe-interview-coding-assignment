@@ -29,7 +29,14 @@
     opacity var(--transition);
 }
 
-.thumb:hover .image {
+.thumb:focus-visible .image {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+@media (hover: hover) {
+  .thumb:hover .image {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 }

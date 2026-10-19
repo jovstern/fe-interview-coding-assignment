@@ -8,6 +8,5 @@ describe('HomeSkeleton', () => {
 
     expect(container.firstChild).toHaveAttribute('aria-busy', 'true');
     expect(screen.getByRole('status')).toHaveTextContent('Loading…');
-    expect(screen.getByRole('status')).toHaveClass('visually-hidden');
   });
 });

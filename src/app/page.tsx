@@ -7,7 +7,7 @@ import { GreetingHeader } from './ui/home/greeting-header';
 import { PhotoGrid } from './ui/home/photo-grid';
 
 export default async function Home() {
-  // The greeting depends on the request time, so render per request.
+  // The greeting depends on the request time (in the server's time zone), so render per request.
   await connection();
   const home = await getHome();
 
