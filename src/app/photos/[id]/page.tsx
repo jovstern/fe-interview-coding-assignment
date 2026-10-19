@@ -41,7 +41,11 @@ export default async function PhotoPage({
       <PhotoHero photo={photo} />
       {/* Keyed so a related photo, reached by client navigation, starts fresh. */}
       <PhotoSheet key={photo.id} photo={photo}>
-        <RelatedPhotos related={photo.related} feed={home.items} />
+        <RelatedPhotos
+          currentId={photo.id}
+          related={photo.related}
+          feed={home.items}
+        />
       </PhotoSheet>
     </main>
   );

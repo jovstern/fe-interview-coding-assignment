@@ -1,39 +1,44 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import type { FeedItem, RelatedPhoto } from '../../lib/definitions';
 import { photoAlt } from '../../lib/utils';
 import styles from './related-photos.module.css';
+import { ThumbLink } from './thumb-link';
 
 export function RelatedPhotos({
+  currentId,
   related,
   feed,
 }: {
+  currentId: string;
   related: RelatedPhoto[];
   feed: FeedItem[];
 }) {
-  // Related photos only carry an id and a thumbnail; the feed names them.
-  const feedById = new Map(feed.map((item) => [item.id, item]));
+  // The API lists the other photos only, so the row would lose the one on show and
+  // reorder on every click. The feed gives a stable order and the current photo's image.
+  const thumbnailById = new Map(
+    related.map((photo) => [photo.id, photo.thumbnailUrl])
+  );
+  const photos = feed.filter(
+    (item) => item.id === currentId || thumbnailById.has(item.id)
+  );
 
   return (
     <nav aria-label="Related photos">
       <ul className={styles.row}>
-        {related.map((photo) => {
-          const item = feedById.get(photo.id);
+        {photos.map((item) => {
+          const current = item.id === currentId;
           return (
-            <li key={photo.id}>
-              <Link
-                href={`/photos/${photo.id}`}
-                className={styles.thumb}
-              >
+            <li key={item.id}>
+              <ThumbLink href={`/photos/${item.id}`} current={current}>
                 <Image
-                  src={photo.thumbnailUrl}
+                  src={thumbnailById.get(item.id) ?? item.image.url}
                   width={78}
                   height={78}
                   sizes="78px"
-                  alt={item ? photoAlt(item) : 'Related photo'}
+                  alt={photoAlt(item)}
                   className={styles.image}
                 />
-              </Link>
+              </ThumbLink>
             </li>
           );
         })}
