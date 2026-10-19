@@ -1,0 +1,53 @@
+.sheet {
+  /* What stays in view when collapsed: the handle, the eyebrow and the title. */
+  --sheet-peek: 92px;
+
+  transition: transform 300ms ease;
+}
+
+.sheet[data-collapsed='true'] {
+  transform: translateY(calc(100% - var(--sheet-peek)));
+  /* Exactly the sheet's minimum height, so the peek lands at the bottom of the screen. */
+  max-height: 54dvh;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    transition: none;
+  }
+}
+
+/* A full-width tap target around the design's 40 × 4 handle. */
+.handle {
+  display: block;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
+  background: none;
+  padding: 11px 0 15px;
+  width: 100%;
+}
+
+.handle:focus-visible {
+  outline-offset: -2px;
+}
+
+.bar {
+  display: block;
+  transition: background-color var(--transition);
+  border-radius: 2px;
+  background: var(--color-border);
+  width: 40px;
+  height: 4px;
+}
+
+.handle:focus-visible .bar {
+  background: var(--color-subtle);
+}
+
+@media (hover: hover) {
+  .handle:hover .bar {
+    background: var(--color-subtle);
+  }
+}

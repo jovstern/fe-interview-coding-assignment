@@ -1,3 +1,5 @@
 .page {
   padding-top: 46dvh;
+  /* Clips the collapsed sheet's off-screen part, so the page does not scroll to it. */
+  overflow: clip;
 }

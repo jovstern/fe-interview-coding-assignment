@@ -2,16 +2,8 @@
   position: relative;
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   background: var(--color-surface);
-  padding: 11px var(--gutter-details) 32px;
+  padding: 0 var(--gutter-details) 32px;
   min-height: 54dvh;
-}
-
-.handle {
-  margin-bottom: 15px;
-  border-radius: 2px;
-  background: var(--color-border);
-  width: 40px;
-  height: 4px;
 }
 
 .eyebrow {
