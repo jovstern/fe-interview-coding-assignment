@@ -19,3 +19,9 @@
   font-size: 13px;
   line-height: 1.5;
 }
+
+@media (min-width: 1024px) {
+  .headline {
+    font-size: 40px;
+  }
+}

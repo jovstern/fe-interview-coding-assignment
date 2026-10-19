@@ -30,6 +30,12 @@
   --transition: 200ms ease;
 }
 
+@media (min-width: 640px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
 html {
   height: 100%;
 }

@@ -1,15 +1,18 @@
-.sheet {
-  /* What stays in view when collapsed: the handle, the eyebrow and the title. */
-  --sheet-peek: 92px;
+/* Collapsing is a phone gesture; from 1024px the sheet is a side panel without a handle. */
+@media (max-width: 1023.98px) {
+  .sheet {
+    /* What stays in view when collapsed: the handle, the eyebrow and the title. */
+    --sheet-peek: 92px;
 
-  transition: transform 300ms ease;
-}
+    transition: transform 300ms ease;
+  }
 
-.sheet[data-collapsed='true'] {
-  transform: translateY(calc(100% - var(--sheet-peek)));
-  /* Exactly the sheet's minimum height, so the peek lands at the bottom of the screen. */
-  max-height: 54dvh;
-  overflow: hidden;
+  .sheet[data-collapsed='true'] {
+    transform: translateY(calc(100% - var(--sheet-peek)));
+    /* Exactly the sheet's minimum height, so the peek lands at the bottom of the screen. */
+    max-height: 54dvh;
+    overflow: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -49,5 +52,11 @@
 @media (hover: hover) {
   .handle:hover .bar {
     background: var(--color-subtle);
+  }
+}
+
+@media (min-width: 1024px) {
+  .handle {
+    display: none;
   }
 }

@@ -3,3 +3,14 @@
   /* Clips the collapsed sheet's off-screen part, so the page does not scroll to it. */
   overflow: clip;
 }
+
+/* Desktop: the photo on the left, the sheet as a scrolling panel on the right. */
+@media (min-width: 1024px) {
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    align-items: start;
+    padding-top: 0;
+    overflow: visible;
+  }
+}

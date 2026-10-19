@@ -106,3 +106,18 @@
   color: var(--color-muted);
   font-size: 10px;
 }
+
+@media (min-width: 1024px) {
+  .sheet {
+    /* Inherited by the related row, which bleeds to the panel's edges. */
+    --gutter-details: 32px;
+
+    border-radius: 0;
+    padding: 48px var(--gutter-details);
+    min-height: 100dvh;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}

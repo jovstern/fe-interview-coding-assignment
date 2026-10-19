@@ -236,3 +236,47 @@
   width: 34px;
   height: 34px;
 }
+
+/* The same breakpoints as the real pages. */
+
+@media (min-width: 640px) {
+  .grid {
+    columns: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    columns: 4;
+  }
+
+  .headline {
+    font-size: 40px;
+  }
+
+  .photo {
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    align-items: start;
+    padding-top: 0;
+  }
+
+  .hero {
+    position: sticky;
+    top: 0;
+  }
+
+  .sheet {
+    border-radius: 0;
+    padding: 48px 32px;
+    min-height: 100dvh;
+  }
+
+  .handle {
+    display: none;
+  }
+
+  .photoTitle {
+    font-size: 36px;
+  }
+}
