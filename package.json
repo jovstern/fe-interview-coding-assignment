@@ -6,14 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint src e2e --max-warnings 0",
     "dev:server": "npm --prefix external-server run dev",
     "dev:all": "concurrently -n next,server -c blue,green \"npm:dev\" \"npm:dev:server\"",
     "postinstall": "npm --prefix external-server install",
     "format": "prettier --write src external-server",
     "format:check": "prettier --check src external-server",
     "knip": "knip",
-    "knip:5": "knip -- --max-show-issues 5"
+    "knip:5": "knip -- --max-show-issues 5",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "e2e": "playwright test",
+    "check": "prettier --check src e2e && npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
     "next": "16.3.7",
@@ -22,17 +26,23 @@
     "svgo": "^4.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/node": "^24.19.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
     "concurrently": "^10.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.3.7",
+    "jsdom": "^30.1.3",
     "prettier": "^3.9.9",
     "prettier-plugin-css-order": "^2.2.0",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.5"
   }
 }
