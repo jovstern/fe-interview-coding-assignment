@@ -1,0 +1,56 @@
+.hero {
+  position: fixed;
+  inset: 0;
+  background: var(--color-placeholder);
+  height: 100dvh;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.back,
+.counter {
+  display: flex;
+  position: absolute;
+  top: 54px;
+  align-items: center;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--color-surface);
+}
+
+.back {
+  left: var(--gutter);
+  justify-content: center;
+  transition: background-color var(--transition);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 50%;
+  background: var(--color-glass);
+  width: 42px;
+  height: 42px;
+}
+
+.back:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.counter {
+  /* Centred on the 42px back button. */
+  top: calc(54px + (42px - 32px) / 2);
+  right: var(--gutter);
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-overlay);
+  padding: 0 14px 0 12px;
+  height: 32px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.dot {
+  border-radius: 50%;
+  background: var(--color-accent);
+  width: 6px;
+  height: 6px;
+}

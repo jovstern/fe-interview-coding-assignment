@@ -1,0 +1,36 @@
+.meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--color-icon-bg);
+  width: 34px;
+  height: 34px;
+}
+
+.value {
+  order: 1;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.label {
+  order: 2;
+  margin-top: 1px;
+  color: var(--color-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
