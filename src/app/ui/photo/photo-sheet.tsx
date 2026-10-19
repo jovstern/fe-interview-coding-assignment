@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import type { PhotoResponse } from '../../lib/definitions';
+import { FollowButton } from './follow-button';
 import { PhotoMeta } from './photo-meta';
 import styles from './photo-sheet.module.css';
 
@@ -39,6 +40,10 @@ export function PhotoSheet({
               {author.role} · {author.city}
             </p>
           </div>
+          <FollowButton
+            isFollowing={author.isFollowing}
+            authorName={author.name}
+          />
         </div>
         <p className={styles.description}>{photo.description}</p>
         <hr className={styles.divider} />

@@ -1,0 +1,38 @@
+.button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  cursor: pointer;
+  margin-left: auto;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-soft);
+  padding: 0 14px;
+  height: 30px;
+  color: var(--color-accent);
+  font: inherit;
+  font-size: 11px;
+}
+
+.button[aria-pressed='true'] {
+  background: var(--color-accent);
+  color: var(--color-surface);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--color-accent);
+    color: var(--color-surface);
+  }
+
+  .button[aria-pressed='true']:hover {
+    background: color-mix(
+      in srgb,
+      var(--color-accent),
+      var(--color-ink) 15%
+    );
+  }
+}
