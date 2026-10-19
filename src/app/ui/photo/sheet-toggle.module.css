@@ -13,11 +13,9 @@
     max-height: 54dvh;
     overflow: hidden;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .sheet {
-    transition: none;
+  .sheet[data-collapsed='true'] .details {
+    visibility: hidden;
   }
 }
 

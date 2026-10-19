@@ -26,7 +26,7 @@ export function PhotoCard({
           src={item.image.url}
           width={item.image.width}
           height={item.image.height}
-          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          sizes="(min-width: 1264px) 285px, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
           alt={photoAlt(item)}
           loading={eager ? 'eager' : 'lazy'}
           className={styles.image}

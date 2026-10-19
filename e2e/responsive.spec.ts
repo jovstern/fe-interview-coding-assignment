@@ -52,7 +52,7 @@ test.describe('at desktop size', () => {
       main.getByRole('button', { name: 'Show full photo' })
     ).toBeHidden();
     await expect(
-      main.getByRole('button', { name: 'Follow Sofia Lind' })
+      main.getByRole('button', { name: 'Following Sofia Lind' })
     ).toBeVisible();
 
     const photoBox = await main.getByRole('img').first().boundingBox();
@@ -70,6 +70,38 @@ test.describe('at desktop size', () => {
     );
     expect(overflows).toBe(false);
   });
+});
+
+test.describe('at a short desktop window', () => {
+  test.use({ viewport: { width: 1280, height: 400 } });
+
+  test('the photo stays in place while the details scroll', async ({
+    page,
+  }) => {
+    await page.goto('/photos/p_001');
+    const hero = page.getByRole('main').getByRole('img').first();
+    await expect(hero).toBeVisible();
+
+    await page.evaluate(() => window.scrollBy(0, 200));
+    // The page may be shorter than 200px past the fold; any real scroll proves it.
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(100);
+    const box = await hero.boundingBox();
+    expect(box).not.toBeNull();
+    expect(Math.abs(box!.y)).toBeLessThanOrEqual(1);
+  });
+});
+
+test('Tab first focuses the skip link', async ({ page }) => {
+  await page.goto('/');
+  await expect(
+    page.getByRole('heading', { name: 'Moments worth keeping' })
+  ).toBeVisible();
+  await page.keyboard.press('Tab');
+  await expect(
+    page.getByRole('link', { name: 'Skip to content' })
+  ).toBeFocused();
 });
 
 test.describe('at phone size', () => {

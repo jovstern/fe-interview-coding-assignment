@@ -5,7 +5,7 @@ import styles from './sheet-toggle.module.css';
 
 // Owns only whether the sheet is collapsed; the sheet's content is server-rendered and
 // passed in. Collapsed, the summary (eyebrow and title) stays visible and the rest is
-// below the fold, so it is made inert.
+// below the fold, so CSS hides it (phones only, so widening the window shows it again).
 export function SheetToggle({
   className,
   summary,
@@ -19,7 +19,6 @@ export function SheetToggle({
 
   return (
     <article
-      id="photo-details"
       data-collapsed={collapsed}
       className={`${className} ${styles.sheet}`}
     >
@@ -36,7 +35,9 @@ export function SheetToggle({
         <span aria-hidden className={styles.bar} />
       </button>
       {summary}
-      <div inert={collapsed}>{children}</div>
+      <div id="photo-details" className={styles.details}>
+        {children}
+      </div>
     </article>
   );
 }

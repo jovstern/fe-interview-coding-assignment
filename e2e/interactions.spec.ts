@@ -29,12 +29,12 @@ test.describe('at phone size', () => {
 
     // Sofia Lind is followed on the server; the toggle flips it locally.
     const follow = main.getByRole('button', {
-      name: 'Follow Sofia Lind',
+      name: /^Follow(ing)? Sofia Lind$/,
     });
     await expect(follow).toHaveAttribute('aria-pressed', 'true');
     await follow.click();
     await expect(follow).toHaveAttribute('aria-pressed', 'false');
-    await expect(follow).toHaveText('Follow');
+    await expect(follow).toHaveAccessibleName('Follow Sofia Lind');
     await page.waitForTimeout(1000);
 
     await main.getByRole('button', { name: 'Show full photo' }).click();
@@ -52,17 +52,23 @@ test.describe('at phone size', () => {
     await expect(follow).toBeInViewport();
     await page.waitForTimeout(1000);
 
-    // Lucia Moretti is followed on the server: a fresh sheet shows that, not the
-    // previous photo's toggle.
+    // Collapsed again, then on to a related photo: its sheet starts expanded, and Lucia
+    // Moretti is followed on the server, so it shows that, not the previous toggle. The
+    // collapsed sheet hides the related links, so the click is dispatched directly.
+    await main.getByRole('button', { name: 'Show full photo' }).click();
+    await expect(handle).toHaveAttribute('aria-expanded', 'false');
     await main
-      .getByRole('link', { name: 'Amalfi Steps by Lucia Moretti' })
-      .click();
+      .getByRole('link', {
+        name: 'Amalfi Steps by Lucia Moretti',
+        includeHidden: true,
+      })
+      .dispatchEvent('click');
     await expect(
       main.getByRole('heading', { level: 1, name: 'Amalfi Steps' })
     ).toBeVisible();
     await expect(
-      main.getByRole('button', { name: 'Follow Lucia Moretti' })
-    ).toHaveText('Following');
+      main.getByRole('button', { name: 'Following Lucia Moretti' })
+    ).toHaveAttribute('aria-pressed', 'true');
     await expect(
       main.getByRole('button', { name: 'Show full photo' })
     ).toHaveAttribute('aria-expanded', 'true');

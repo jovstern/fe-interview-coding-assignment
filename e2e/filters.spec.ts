@@ -31,3 +31,13 @@ test('an unknown collection shows the empty state', async ({
     page.getByRole('link', { name: 'Show all photos' })
   ).toHaveAttribute('href', '/');
 });
+
+test('an empty filter shows the whole feed', async ({ page }) => {
+  await page.goto('/?filter=');
+  await expect(
+    page.getByRole('main').locator('a[href^="/photos/"]')
+  ).toHaveCount(8);
+  await expect(
+    page.getByRole('link', { name: 'For you' })
+  ).toHaveAttribute('aria-current', 'page');
+});

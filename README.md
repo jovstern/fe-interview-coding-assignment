@@ -23,8 +23,8 @@ The app reads the API from `API_URL` (optional, default `http://localhost:4000`)
   off. Nothing from the server is copied into client state.
 - **URL state:** the active collection is `/?filter=<id>` and a photo is `/photos/[id]`, so
   every view can be shared, bookmarked and restored with Back.
-- **Client code:** two small leaves only: the sheet toggle (collapses the details sheet on
-  phones) and the Follow button. Everything else renders on the server.
+- **Client code:** two interactive client leaves (plus the error boundaries): the sheet
+  toggle (collapses the details sheet on phones) and the Follow button.
 - **Images:** `next/image` with the API's width and height (no layout shift), `sizes` per
   breakpoint, a preloaded hero on the details page and eager loading for the first two
   cards.
@@ -46,6 +46,8 @@ The app reads the API from `API_URL` (optional, default `http://localhost:4000`)
 - **Design tokens:** the Figma file was view-only, so colours, type and spacing were
   measured from the PDF export and a screenshot. The picsum images differ from the PDF's
   photos.
+- **Chip contrast:** white on the accent (the 12px chips) is 3.2:1 as given by the design,
+  and was left as designed.
 
 ### Assumptions
 

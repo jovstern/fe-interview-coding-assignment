@@ -264,6 +264,7 @@
   .hero {
     position: sticky;
     top: 0;
+    background: var(--color-ink);
   }
 
   .sheet {

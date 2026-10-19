@@ -19,11 +19,11 @@ export function FollowButton({
     <button
       type="button"
       aria-pressed={following}
-      aria-label={`Follow ${authorName}`}
       className={styles.button}
       onClick={() => setToggled((value) => !value)}
     >
-      {following ? 'Following' : 'Follow'}
+      {following ? 'Following' : 'Follow'}{' '}
+      <span className="visually-hidden">{authorName}</span>
     </button>
   );
 }
