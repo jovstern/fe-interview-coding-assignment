@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  box-shadow:
+    0 0 0 2px var(--color-surface),
+    var(--shadow-card);
+  border-radius: 50%;
+  background: var(--color-placeholder);
+}
+
+.greeting {
+  color: var(--color-muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.name {
+  font-size: 14px;
+  line-height: 1.4;
+}
