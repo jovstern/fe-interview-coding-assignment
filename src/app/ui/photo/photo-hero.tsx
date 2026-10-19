@@ -21,7 +21,7 @@ export function PhotoHero({ photo }: { photo: PhotoResponse }) {
         aria-label="Back to all photos"
         className={styles.back}
       >
-        <ArrowLeftIcon aria-hidden width={20} height={20} />
+        <ArrowLeftIcon aria-hidden />
       </Link>
       <p className={styles.counter}>
         <span aria-hidden className={styles.dot} />

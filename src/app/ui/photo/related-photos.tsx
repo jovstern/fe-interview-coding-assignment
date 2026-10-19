@@ -23,7 +23,7 @@ export function RelatedPhotos({
   );
 
   return (
-    <nav aria-label="Related photos">
+    <nav aria-label="Related photos" className={styles.related}>
       <ul className={styles.row}>
         {photos.map((item) => {
           const current = item.id === currentId;
