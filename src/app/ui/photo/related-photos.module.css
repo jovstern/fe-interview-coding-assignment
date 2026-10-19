@@ -1,3 +1,8 @@
+/* Pinned to the bottom of the sheet, so it stays put when the text above changes length. */
+.related {
+  margin-top: auto;
+}
+
 .row {
   display: flex;
   gap: 8px;

@@ -11,6 +11,12 @@ export const homeResponse = {
     { id: 'for-you', label: 'For you', active: true },
     { id: 'coast', label: 'Coast', active: false },
     { id: 'architecture', label: 'Architecture', active: false },
+    { id: 'for-you1', label: 'For you1', active: false },
+    { id: 'coast1', label: 'Coast1', active: false },
+    { id: 'architecture1', label: 'Architecture1', active: false },
+    { id: 'for-you2', label: 'For you2', active: false },
+    { id: 'coast2', label: 'Coast2', active: false },
+    { id: 'architecture2', label: 'Architecture', active: false },
   ],
   items: [
     {

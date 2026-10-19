@@ -18,12 +18,13 @@ export function RelatedPhotos({
   const thumbnailById = new Map(
     related.map((photo) => [photo.id, photo.thumbnailUrl])
   );
+
   const photos = feed.filter(
     (item) => item.id === currentId || thumbnailById.has(item.id)
   );
 
   return (
-    <nav aria-label="Related photos">
+    <nav aria-label="Related photos" className={styles.related}>
       <ul className={styles.row}>
         {photos.map((item) => {
           const current = item.id === currentId;

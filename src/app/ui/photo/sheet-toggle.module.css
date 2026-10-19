@@ -19,6 +19,13 @@
   }
 }
 
+/* Stretches so the related row can sit at the bottom of the sheet, whatever the text above. */
+.details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 /* A full-width tap target around the design's 40 × 4 handle. */
 .handle {
   display: block;

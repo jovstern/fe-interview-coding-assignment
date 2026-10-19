@@ -1,5 +1,7 @@
 .sheet {
+  display: flex;
   position: relative;
+  flex-direction: column;
   border-radius: var(--radius-sheet) var(--radius-sheet) 0 0;
   background: var(--color-surface);
   padding: 0 var(--gutter-details) 32px;
@@ -46,6 +48,7 @@
 
 .body {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 16px;
   margin-top: 14px;
