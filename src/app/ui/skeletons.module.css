@@ -90,6 +90,17 @@
   width: 40%;
 }
 
+.chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chip {
+  border-radius: var(--radius-pill);
+  height: 34px;
+}
+
 .grid {
   column-gap: var(--grid-gap);
   columns: 2;
